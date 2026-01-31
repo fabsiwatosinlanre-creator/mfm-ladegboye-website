@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fabsiwatosinlanre-creator.github.io/mfm-church-site/sitemap.xml
