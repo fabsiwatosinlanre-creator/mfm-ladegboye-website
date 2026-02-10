@@ -328,7 +328,7 @@ body {
     font-size: 0.95rem;
 }
 
-
+/* Scroll Animation
 .hero-content {
     animation: fadeInUp 1.2s ease forwards;
 }
@@ -342,7 +342,21 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}     */
+
+/* === SMOOTH SCROLL ANIMATIONS === */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
 }
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* HAMBURGER MENU */
 .hamburger {
@@ -497,6 +511,23 @@ body {
     transform: scale(1.15);
 }
 
+/* === PAGE LOAD FADE-IN === */
+body {
+    opacity: 0;
+    animation: pageFadeIn 1.2s ease forwards; 
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
 /* PULSE ANIMATION*/
 @keyframes pulse {
     0% { transform: scale(1); }
@@ -508,3 +539,84 @@ body {
     animation: pulse 2s infinite;
 }
 
+/* === MOBILE UX IMPROVEMENTS === */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    section {
+        padding: 60px 18px;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+        line-height: 1.3;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .program-card,
+    .contact-card {
+        padding: 22px 18px;
+    }
+
+    .whatsapp-float {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+/* ACTIVE NAV LINK */
+.nav-links a.active {
+    color: #ffd700;
+    font-weight: 700;
+}
+
+/* ===== MOBILE NAVIGATION FINAL FIX ===== */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 26px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(68,0,102,0.98);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        transform: translateY(-120%);
+        transition: transform 0.35s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    .nav-links li {
+        margin: 12px 0;
+    }
+}
